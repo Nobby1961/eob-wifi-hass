@@ -56,7 +56,7 @@ def decode_therm_status(payload: bytes) -> dict:
         return {}
     result = {
         "desiredTemp": payload[0] / 2,
-        "actualTemp": float(payload[1]),
+        "actualTemp": round(float(payload[1]) + (payload[2] / 50.0), 1),
         "unknown_2": payload[2],
         "unknown_3": payload[3],
     }
